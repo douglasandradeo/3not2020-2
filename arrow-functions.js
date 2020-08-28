@@ -23,6 +23,7 @@ console.log('--------------------------')
 // Situação alternativa 1: função sem argumento
 
 // Retorna um número aleatório entre 0 e 99
+// - Se quiser de 0 a 100, basta multiplicar por 101
 let aleatorio = function() {
     //Math.random() -> gera um número aleatório entre 0 e 1 (fracionário)
     //Math.floor() -> "corta fora" as casas decimais de um número
