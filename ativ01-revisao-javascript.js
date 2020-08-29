@@ -145,15 +145,20 @@ for(let i = 0; i < estadosNe.length; i++) {
 
 */
 
-let exibir = n => {
-    for(let dados in n){
-        console.log(`Propriedade:${dados}, Valor:${n[dados]}`)
+let exibir = estados => {
+    for(let prop in estados){
+        console.log(`Propriedade: ${prop}, Valor: ${estados[prop]}`)
     }
 }
 
 
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
       invoque a função escrita em 4) para exibi-lo.
+*/
+
+for(let objeto of estadosNe) {
+    exibir(objeto)
+}
 
 /*
    6)
@@ -167,3 +172,6 @@ let exibir = n => {
          já existentes, e assim por diante.
 
 */
+
+let estadosNe2 = []
+
