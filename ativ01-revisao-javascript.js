@@ -175,3 +175,30 @@ for(let objeto of estadosNe) {
 
 let estadosNe2 = []
 
+estadosNe2.push(estadosNe[0].nome)
+estadosNe2.unshift(estadosNe[1].nome)
+estadosNe2.splice(1, 0, estadosNe[2].nome)
+estadosNe2.splice(1, 0, estadosNe[3].nome)
+estadosNe2.splice(2, 0, estadosNe[4].nome)
+estadosNe2.splice(1, 0, estadosNe[5].nome)
+estadosNe2.splice(4, 0, estadosNe[6].nome)
+estadosNe2.splice(2, 0, estadosNe[7].nome)
+estadosNe2.splice(1, 0, estadosNe[8].nome)
+
+/*
+
+Alagoas (1)
+Bahia (8)
+Ceará (5)
+Maranhão (7)
+Paraíba (3)
+Pernambuco (4)
+Piauí (6)
+Rio Grande do Norte (2)
+Sergipe (0)
+
+*/
+
+
+console.log(estadosNe2)
+
