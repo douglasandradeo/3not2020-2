@@ -3,12 +3,18 @@
 // Método Raul Seixas: Início, fim e o meio
 let comp = 0
 
-// Implementação Iterativa
-function buscaBinaria(lista, valorBusca, fnComp) {
-    let inicio = 0
-    let fim = lista.length -1
+// Implementação recursiva
+// Uma função chama a si mesma com pelo menos um de seus parâmetros com valor alterado
+// Função recursiva precisa ter, pelo menos, uma condição de saída. Isto é, uma possibilidade
+// de término que não envolve uma chamada a ela mesma.
+
+// Parâmetro opcional, faz-se desnecessário informar posteriormente.
+// Caso a função seja chamada sem especificá-los, eles assumirão os valores indicados.   
+function buscaBinaria(lista, valorBusca, fnComp, inicio = 0 , fim = lista.length - 1) {
+    // let inicio = 0
+    // let fim = lista.length -1
     
-    while(fim >= inicio) {
+    if(fim >= inicio) {
         // Math.floor(): retira as casas decimais de um número arredondando para baixo
         // Math.ceil(): arredonda para baixo
         // Math.round(): arredonda conforme regra matemática se for até .4 arredonda para baixo, .5 acima arredonda para cima
@@ -19,18 +25,20 @@ function buscaBinaria(lista, valorBusca, fnComp) {
         // Verifica se o valor na posição média é o valor de busca
         if(res == 0) {
             comp++ // Uma comparação foi realizada
-            return meio
+            return meio     // Condição de saída
         }
         else if(res < 0) {
             comp += 2 // Duas comparação foi realizada
-            fim = meio -1
+            // Condição recursiva (volta ao início da função com dados motificados)
+            return buscaBinaria(lista, valorBusca, fnComp, inicio, meio - 1)
         }
         else { //valorBusca > lista[meio]
             comp += 2 // Duas comparação foi realizada
-            inicio = meio + 1
+            // Condição recursiva (volta ao início da função com dados motificados)
+            return buscaBinaria(lista, valorBusca, fnComp, meio + 1, fim)
         }
     }
-    return -1 // Valor não encontrado
+    return -1 // Valor não encontrado (Condição de saída)
 }
 
 function comparaNome(obj, valorBusca) {
@@ -41,6 +49,18 @@ function comparaNome(obj, valorBusca) {
     // Um número positivo para indicar que o pirmeiro > segundo
     else return 1 // valorBusca > obj.first_name
 }
+
+let nums = [4, 16, 22, 29, 35, 44, 52, 58, 66, 71, 80, 88, 94]
+
+console.log(buscaBinaria(nums, 66, (elPos, busca) => {
+    if(busca === elPos) return 0
+    else if (busca < elPos) return -1
+    else return 1
+}))
+
+// Termina a execução sem passar pelas linhas abaixo
+// process.exit(0) // 0 = saindo sem erros
+
 
 let listaNomes = require('./dados/lista-nomes')
 
