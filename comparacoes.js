@@ -1,4 +1,4 @@
-// Comparando dois números distintos
+/*// Comparando dois números distintos
 let a = 10, b = 7
 console.log(a > b)
 console.log(b > a)
@@ -9,7 +9,7 @@ console.log('-----------------------------')
 let x = 'abacaxi', y = 'jabuticaba' // -> Se fossem palavras com acento, provavelmente ficariam no final, independente da letra
 console.log(x > y)                  // porque considera-se a tabela ASCII
 console.log(y > x)
-
+*/
 console.log('-----------------------------')
 
 // Comparando dois objetos
@@ -19,8 +19,14 @@ console.log(carro1 > carro2)
 console.log(carro2 > carro1)
 console.log(carro1 == carro2)
 
+if(carro1 == carro2) console.log('verde')
+else if(carro2 < carro1) console.log('amarelo')
+else console.log('vermelho')
+
 console.log('-----------------------------')
 
+
+/*
 // Comparando booleanos
 console.log(true > false)
 console.log(false > true)
@@ -31,3 +37,5 @@ console.log('-----------------------------')
 // - Number
 // - String
 // - Boolean
+
+*/
