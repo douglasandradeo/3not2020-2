@@ -21,6 +21,20 @@ class FormaGeometrica {
         this.tipo = tipo
     }
 
+       /* Método setter
+        
+       set base(valor) {
+            if(isNaN(valor) || valor <= 0) {
+                throw new Error('A base deve ser numérica e maior que zero')
+            }
+            this._base = valor
+        }
+
+        */
+
+        // Método getter
+        get 
+
     // como "area" está dentro do objeto, não precisa receber mais informações sobre sua forma
     area() {
         switch(this.tipo) {
@@ -55,5 +69,4 @@ retangulo.base = 2.75
 console.log(retangulo.area())
 
 console.log('Área do teste', teste.area())
-
-console.log('Área do teste', teste.area())
+console.log('Base do teste', teste.base)
