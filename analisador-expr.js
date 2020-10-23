@@ -1,12 +1,16 @@
 /*
-6 + {​​ 8 / [3 - (9 * 2)] + (4 * 3)}​​
+
+    6 + {​​ 8 / [3 - (9 * 2)] + (4 * 3)}​​
+
 */
 
-const Stack = require ('./lib/Stack')
+const Stack = require('./lib/Stack2')
 
 let analisador = new Stack()
 
-let expr = '6 + {​​ 8 / [3 - (9 * 2)] + (4 * 3)}​​'
+let expr = '6 + {​​ 8 / [3 - (9 * 2)] + (4 * 3)}'
+//let expr = '6 + {​​ 8 / [3 - (9 * 2)] + (4 * 3)}​​ + (2 -​​'
+let info
 
 for(let i = 0; i < expr.length; i++) {
     switch(expr.charAt(i)) {
@@ -14,41 +18,55 @@ for(let i = 0; i < expr.length; i++) {
             analisador.push({pos: i, tipo: 'CH'})
             break
         case '[':
-            analisador.push({pos: i, tipo: 'CO'})
+            analisador.push({pos: i, tipo: 'CO'})            
             break
         case '(':
-            analisador.push({pos: i, tipo: 'PA'})
+            analisador.push({pos: i, tipo: 'PA'})            
             break
         case '}':
             info = analisador.pop()
-            // info não pode ser vazio e seu tipo deve ser CH
+            // info não pode ser vazio e seu tipo de ser CH
             if(info && info.tipo == 'CH') {
                 console.log(`Chave aberta na posição ${info.pos} e fechada na posição ${i}`)
             }
             else {
-                console.log(`ERRO: Chave fechando na posição ${i} não tem a abertura correspondente`)
+                console.log(`ERRO: chave fechando na posição ${i} não tem a abertura correspondente`)
             }
-            break
+            break   
         case ']':
             info = analisador.pop()
-            // info não pode ser vazio e seu tipo deve ser CH
+            // info não pode ser vazio e seu tipo de ser CO
             if(info && info.tipo == 'CO') {
-                console.log(`Chave aberta na posição ${info.pos} e fechada na posição ${i}`)
+                console.log(`Colchete aberta na posição ${info.pos} e fechada na posição ${i}`)
             }
             else {
-                console.log(`ERRO: Chave fechando na posição ${i} não tem a abertura correspondente`)
+                console.log(`ERRO: colchete fechando na posição ${i} não tem a abertura correspondente`)
             }
-            break
+            break 
         case ')':
             info = analisador.pop()
-            // info não pode ser vazio e seu tipo deve ser CH
+            // info não pode ser vazio e seu tipo de ser PA
             if(info && info.tipo == 'PA') {
-                console.log(`Chave aberta na posição ${info.pos} e fechada na posição ${i}`)
+                console.log(`Parêntese aberta na posição ${info.pos} e fechada na posição ${i}`)
             }
             else {
-                console.log(`ERRO: Chave fechando na posição ${i} não tem a abertura correspondente`)
+                console.log(`ERRO: parêntese fechando na posição ${i} não tem a abertura correspondente`)
             }
-        }
+    }
+}
+
+// Analisar resíduo da pilha
+while(analisador.size() > 0) {
+    info = analisador.pop()
+    switch(info.tipo) {
+        case 'PA':
+            console.log(`ERRO: Parêntese aberto na posição ${info.pos} não tem o fechamento correspondente`)
+            break   
+        case 'CO':
+            console.log(`ERRO: Colchete aberto na posição ${info.pos} não tem o fechamento correspondente`)
+            break 
+        case 'CH':
+            console.log(`ERRO: Chave aberta na posição ${info.pos} não tem o fechamento correspondente`) 
 
     }
 }
